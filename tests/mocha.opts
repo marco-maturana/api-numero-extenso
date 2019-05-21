@@ -1,0 +1,7 @@
+# mocha.opts
+--exit
+--colors
+--ui bdd
+--require ts-node/register
+--file app.ts
+tests/specs/**/*.test.ts --recursive
