@@ -26,7 +26,11 @@ export class Controller {
 
     if (errors) return res.status(500).json({ errors });
 
-    return res.json({ extenso: extenso(req.params.valor, { negative: "informal" }) });
+    const valorExtenso = (parseInt(req.params.valor) === 0)
+      ? "zero"
+      : extenso(req.params.valor, { negative: "informal" });
+
+    return res.json({ extenso: valorExtenso });
   }
 }
 
