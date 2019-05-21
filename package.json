@@ -19,7 +19,8 @@
     "express": "^4.17.0",
     "extenso": "^2.0.1",
     "global": "^4.3.2",
-    "helmet": "^3.18.0"
+    "helmet": "^3.18.0",
+    "validate.js": "^0.12.0"
   },
   "devDependencies": {
     "@types/compression": "^0.0.36",
