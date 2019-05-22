@@ -19,4 +19,6 @@ const controller = new Controller();
 
 server.get("/:valor", controller.extenso.bind(controller));
 
+server.get("/v2/:valor", controller.extensoV2.bind(controller));
+
 export default server;

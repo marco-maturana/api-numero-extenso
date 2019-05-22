@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import extenso from "extenso";
 import validatejs from "validate.js";
+import helperExtenso from "./helper-extenso";
 
 export class Controller {
   private readonly validate: any;
@@ -31,6 +32,14 @@ export class Controller {
       : extenso(req.params.valor, { negative: "informal" });
 
     return res.json({ extenso: valorExtenso });
+  }
+
+  extensoV2 (req: Request, res: Response): Response {
+    const errors = validatejs(req.params, this.validate, { format: "flat" });
+
+    if (errors) return res.status(500).json({ errors });
+
+    return res.json({ extenso: helperExtenso(req.params.valor) });
   }
 }
 
