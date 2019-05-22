@@ -1,14 +1,13 @@
-const unidades = [
-  "zero",
-  "um",
-  "dois",
-  "três",
-  "quatro",
-  "cinco",
-  "seis",
-  "sete",
-  "oito",
-  "nove"
+const centena = [
+  "cento",
+  "duzentos",
+  "trezentos",
+  "quatrocentos",
+  "quinhentos",
+  "seiscentos",
+  "setecentos",
+  "oitocentos",
+  "novecentos"
 ];
 
 const dezena = [
@@ -32,6 +31,19 @@ const dezena = [
   "noventa"
 ];
 
+const unidades = [
+  "zero",
+  "um",
+  "dois",
+  "três",
+  "quatro",
+  "cinco",
+  "seis",
+  "sete",
+  "oito",
+  "nove"
+];
+
 function menor10 (valor: number) {
   return unidades[valor];
 }
@@ -48,6 +60,20 @@ function menor100 (valor: number): string {
     : extensoDezena;
 }
 
+function menor1000 (valor: number): string {
+  if (valor < 100) return menor100(valor);
+  if (valor === 100) return "cem";
+
+  const valorCentena = valor - valor % 100;
+  const valorDezena = valor % 100;
+  const extensoCentena = centena[valorCentena / 100 - 1];
+  const extensoDezena = menor100(valorDezena);
+
+  return valorDezena
+    ? `${extensoCentena} e ${extensoDezena}`
+    : extensoCentena;
+}
+
 export default function (valor: number | string): string {
   const numeroString = (typeof valor === "string") ? valor : valor.toString();
 
@@ -58,6 +84,7 @@ export default function (valor: number | string): string {
 
   if (numeroPositivo < 10) extenso = menor10(numeroPositivo);
   else if (numeroPositivo < 100) extenso = menor100(numeroPositivo);
+  else if (numeroPositivo < 1000) extenso = menor1000(numeroPositivo);
   else extenso = "";
 
   return negativo && extenso ? "menos " + extenso : extenso;
