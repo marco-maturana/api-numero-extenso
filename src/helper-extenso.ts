@@ -74,18 +74,32 @@ function menor1000 (valor: number): string {
     : extensoCentena;
 }
 
+function maior1000 (valor: number): string {
+  const valorCentena = valor % 1000;
+  const valorMilhar = valor - valorCentena;
+
+  const stringMilhar = menor1000(valorMilhar / 1000);
+  const stringCentena = menor1000(valorCentena);
+
+  const juncao = (valorCentena < 100 || valorCentena % 100 === 0)
+    ? "e" : "";
+
+  return `${stringMilhar} mil ${juncao} ${stringCentena}`;
+}
+
 export default function (valor: number | string): string {
   const numeroString = (typeof valor === "string") ? valor : valor.toString();
 
   const negativo = (numeroString[0] === "-");
   const numeroPositivo = parseInt(numeroString.replace("-", ""));
 
+  if (numeroPositivo > 99999) throw new Error("Permitido apenas números entre -99999 e 99999!");
+
   let extenso;
 
-  if (numeroPositivo < 10) extenso = menor10(numeroPositivo);
-  else if (numeroPositivo < 100) extenso = menor100(numeroPositivo);
-  else if (numeroPositivo < 1000) extenso = menor1000(numeroPositivo);
-  else extenso = "";
+  if (numeroPositivo < 1000) extenso = menor1000(numeroPositivo);
+  else if (numeroPositivo === 1000) extenso = "mil";
+  else extenso = maior1000(numeroPositivo);
 
   return negativo && extenso ? "menos " + extenso : extenso;
 }
