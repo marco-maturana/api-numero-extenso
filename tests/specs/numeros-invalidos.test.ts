@@ -2,68 +2,137 @@ import { expect } from "chai";
 import axios from "../axios";
 
 describe("numeros inválidos", function () {
-  it("número menor que -99999", async function () {
-    let resposta;
+  describe("utilizando algoritimo da biblioteca extenso.js", function () {
+    it("número menor que -99999", async function () {
+      let resposta;
 
-    try {
-      resposta = await axios.get("/-100000");
-    } catch (error) {
-      resposta = error.response;
-    }
+      try {
+        resposta = await axios.get("/-100000");
+      } catch (error) {
+        resposta = error.response;
+      }
 
-    expect(resposta.status).to.equal(500);
-    expect(resposta.data.errors).to.include("O valor deve ser maior ou igual a -99999");
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("O valor deve ser maior ou igual a -99999");
+    });
+
+    it("número maior que 99999", async function () {
+      let resposta;
+
+      try {
+        resposta = await axios.get("/100000");
+      } catch (error) {
+        resposta = error.response;
+      }
+
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
+    });
+
+    it("número maior que 99999", async function () {
+      let resposta;
+
+      try {
+        resposta = await axios.get("/100000");
+      } catch (error) {
+        resposta = error.response;
+      }
+
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
+    });
+
+    it("número decimal", async function () {
+      let resposta;
+
+      try {
+        resposta = await axios.get("/1000.32");
+      } catch (error) {
+        resposta = error.response;
+      }
+
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("Deve ser informado apenas números inteiros!");
+    });
+
+    it("valor monetário", async function () {
+      let resposta;
+
+      try {
+        resposta = await axios.get("/1000,32");
+      } catch (error) {
+        resposta = error.response;
+      }
+
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("Apenas números serão aceitos!");
+    });
   });
 
-  it("número maior que 99999", async function () {
-    let resposta;
+  describe("utilizando o próprio algoritimo", function () {
+    it("número menor que -99999", async function () {
+      let resposta;
 
-    try {
-      resposta = await axios.get("/100000");
-    } catch (error) {
-      resposta = error.response;
-    }
+      try {
+        resposta = await axios.get("/v2/-100000");
+      } catch (error) {
+        resposta = error.response;
+      }
 
-    expect(resposta.status).to.equal(500);
-    expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
-  });
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("O valor deve ser maior ou igual a -99999");
+    });
 
-  it("número maior que 99999", async function () {
-    let resposta;
+    it("número maior que 99999", async function () {
+      let resposta;
 
-    try {
-      resposta = await axios.get("/100000");
-    } catch (error) {
-      resposta = error.response;
-    }
+      try {
+        resposta = await axios.get("/v2/100000");
+      } catch (error) {
+        resposta = error.response;
+      }
 
-    expect(resposta.status).to.equal(500);
-    expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
-  });
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
+    });
 
-  it("número decimal", async function () {
-    let resposta;
+    it("número maior que 99999", async function () {
+      let resposta;
 
-    try {
-      resposta = await axios.get("/1000.32");
-    } catch (error) {
-      resposta = error.response;
-    }
+      try {
+        resposta = await axios.get("/v2/100000");
+      } catch (error) {
+        resposta = error.response;
+      }
 
-    expect(resposta.status).to.equal(500);
-    expect(resposta.data.errors).to.include("Deve ser informado apenas números inteiros!");
-  });
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
+    });
 
-  it("valor monetário", async function () {
-    let resposta;
+    it("número decimal", async function () {
+      let resposta;
 
-    try {
-      resposta = await axios.get("/1000,32");
-    } catch (error) {
-      resposta = error.response;
-    }
+      try {
+        resposta = await axios.get("/v2/1000.32");
+      } catch (error) {
+        resposta = error.response;
+      }
 
-    expect(resposta.status).to.equal(500);
-    expect(resposta.data.errors).to.include("Apenas números serão aceitos!");
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("Deve ser informado apenas números inteiros!");
+    });
+
+    it("valor monetário", async function () {
+      let resposta;
+
+      try {
+        resposta = await axios.get("/v2/1000,32");
+      } catch (error) {
+        resposta = error.response;
+      }
+
+      expect(resposta.status).to.equal(500);
+      expect(resposta.data.errors).to.include("Apenas números serão aceitos!");
+    });
   });
 });
