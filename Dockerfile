@@ -16,7 +16,7 @@ COPY --chown=node:node . .
 
 USER node
 
-EXPOSE 8000
+EXPOSE 3000
 
 RUN yarn build
 
