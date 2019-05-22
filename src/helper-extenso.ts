@@ -78,13 +78,20 @@ function maior1000 (valor: number): string {
   const valorCentena = valor % 1000;
   const valorMilhar = valor - valorCentena;
 
-  const stringMilhar = menor1000(valorMilhar / 1000);
-  const stringCentena = menor1000(valorCentena);
+  const extensoMilhar = menor1000(valorMilhar / 1000);
 
-  const juncao = (valorCentena < 100 || valorCentena % 100 === 0)
-    ? "e" : "";
+  let extenso = `${extensoMilhar} mil`;
 
-  return `${stringMilhar} mil ${juncao} ${stringCentena}`;
+  if (valorCentena > 0) {
+    const juncao = (valorCentena < 100 || valorCentena % 100 === 0)
+      ? " e" : "";
+
+    const extensoCentena = menor1000(valorCentena);
+
+    extenso += `${juncao} ${extensoCentena}`;
+  }
+
+  return extenso;
 }
 
 export default function (valor: number | string): string {
