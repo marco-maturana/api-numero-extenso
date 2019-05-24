@@ -49,3 +49,13 @@ Por padrão o servidor será executado na porta *3000*, porem, se desejar, basta
 #### Executando os testes da aplicação**
 
 ``yarn test``
+
+#### Executando a aplicação em um container docker**
+
+* Efetue o download da imagem:
+
+``docker pull marcomaturana/api-numero-extenso``
+
+* A aplicação será executada por padrão na porta 3000, então será necessário efetuar o redirecionamento da porta.
+
+``docker run --name api-numero-extenso -p 8080:3000 -d marcomaturana/api-numero-extenso``
