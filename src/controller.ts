@@ -25,7 +25,7 @@ export class Controller {
   extenso (req: Request, res: Response): Response {
     const errors = validatejs(req.params, this.validate, { format: "flat" });
 
-    if (errors) return res.status(500).json({ errors });
+    if (errors) return res.status(400).json({ errors });
 
     const valorExtenso = (parseInt(req.params.valor) === 0)
       ? "zero"
@@ -37,7 +37,7 @@ export class Controller {
   extensoV2 (req: Request, res: Response): Response {
     const errors = validatejs(req.params, this.validate, { format: "flat" });
 
-    if (errors) return res.status(500).json({ errors });
+    if (errors) return res.status(400).json({ errors });
 
     return res.json({ extenso: helperExtenso(req.params.valor) });
   }
