@@ -12,7 +12,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("O valor deve ser maior ou igual a -99999");
     });
 
@@ -25,7 +25,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
     });
 
@@ -38,7 +38,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
     });
 
@@ -51,7 +51,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("Deve ser informado apenas números inteiros!");
     });
 
@@ -64,7 +64,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("Apenas números serão aceitos!");
     });
   });
@@ -79,7 +79,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("O valor deve ser maior ou igual a -99999");
     });
 
@@ -92,7 +92,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
     });
 
@@ -105,7 +105,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("O valor deve ser menor ou igual a 99999");
     });
 
@@ -118,7 +118,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("Deve ser informado apenas números inteiros!");
     });
 
@@ -131,7 +131,7 @@ describe("numeros inválidos", function () {
         resposta = error.response;
       }
 
-      expect(resposta.status).to.equal(500);
+      expect(resposta.status).to.equal(400);
       expect(resposta.data.errors).to.include("Apenas números serão aceitos!");
     });
   });
