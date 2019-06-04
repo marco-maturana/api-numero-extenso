@@ -120,7 +120,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
   });
 
   it("números inteiros com quatro ou cinco casas", async function () {
-    const valorTeste = dadosTeste("milhar");
+    const valorTeste = dadosTeste("milharExtensoJs");
 
     let resposta;
 

@@ -82,14 +82,7 @@ function maior1000 (valor: number): string {
 
   let extenso = `${extensoMilhar} mil`;
 
-  if (valorCentena > 0) {
-    const juncao = (valorCentena < 100 || valorCentena % 100 === 0)
-      ? " e" : "";
-
-    const extensoCentena = menor1000(valorCentena);
-
-    extenso += `${juncao} ${extensoCentena}`;
-  }
+  if (valorCentena > 0)  extenso += " e " + menor1000(valorCentena);
 
   return extenso;
 }
