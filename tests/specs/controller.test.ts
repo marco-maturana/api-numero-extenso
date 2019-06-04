@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { random } from "faker";
 import axios from "../axios";
-import dadosTeste from "../dados-teste";
+import { dadosExtenso, dadosMonetario } from "../dados-teste";
 
 describe("utilizando algoritmo da biblioteca extenso.js", function () {
   describe("numeros inválidos", function () {
@@ -58,13 +58,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
       let resposta;
 
       try {
-        const monetario = random.number({
-          min: -99999,
-          max: 9999,
-          precision: 0.01
-        }).toString().replace(".", ",");
-
-        resposta = await axios.get(`/${monetario}`);
+        resposta = await axios.get(`/${dadosMonetario()}`);
       } catch (error) {
         resposta = error.response;
       }
@@ -75,7 +69,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
   });
 
   it("números inteiros com apenas uma casa", async function () {
-    const valorTeste = dadosTeste("unidade");
+    const valorTeste = dadosExtenso("unidade");
 
     let resposta;
 
@@ -90,7 +84,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
   });
 
   it("números inteiros com duas casas", async function () {
-    const valorTeste = dadosTeste("dezena");
+    const valorTeste = dadosExtenso("dezena");
 
     let resposta;
 
@@ -105,7 +99,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
   });
 
   it("números inteiros com três casas", async function () {
-    const valorTeste = dadosTeste("centena");
+    const valorTeste = dadosExtenso("centena");
 
     let resposta;
 
@@ -120,7 +114,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
   });
 
   it("números inteiros com quatro ou cinco casas", async function () {
-    const valorTeste = dadosTeste("milharExtensoJs");
+    const valorTeste = dadosExtenso("milharExtensoJs");
 
     let resposta;
 
@@ -190,13 +184,7 @@ describe("utilizando o próprio algoritmo", function () {
       let resposta;
 
       try {
-        const monetario = random.number({
-          min: -99999,
-          max: 9999,
-          precision: 0.01
-        }).toString().replace(".", ",");
-
-        resposta = await axios.get(`/v2/${monetario}`);
+        resposta = await axios.get(`/v2/${dadosMonetario()}`);
       } catch (error) {
         resposta = error.response;
       }
@@ -207,7 +195,7 @@ describe("utilizando o próprio algoritmo", function () {
   });
 
   it("números inteiros com apenas uma casa", async function () {
-    const valorTeste = dadosTeste("unidade");
+    const valorTeste = dadosExtenso("unidade");
 
     let resposta;
 
@@ -222,7 +210,7 @@ describe("utilizando o próprio algoritmo", function () {
   });
 
   it("números inteiros com duas casas", async function () {
-    const valorTeste = dadosTeste("dezena");
+    const valorTeste = dadosExtenso("dezena");
 
     let resposta;
 
@@ -237,7 +225,7 @@ describe("utilizando o próprio algoritmo", function () {
   });
 
   it("números inteiros com três casas", async function () {
-    const valorTeste = dadosTeste("centena");
+    const valorTeste = dadosExtenso("centena");
 
     let resposta;
 
@@ -252,7 +240,7 @@ describe("utilizando o próprio algoritmo", function () {
   });
 
   it("números inteiros com quatro ou cinco casas", async function () {
-    const valorTeste = dadosTeste("milhar");
+    const valorTeste = dadosExtenso("milhar");
 
     let resposta;
 
