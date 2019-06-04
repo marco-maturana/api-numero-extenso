@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { random } from "faker";
 import axios from "../axios";
-import { dadosExtenso, dadosMonetario } from "../dados-teste";
+import { dadosDecimal, dadosExtenso } from "../dados-teste";
 
 describe("utilizando algoritmo da biblioteca extenso.js", function () {
   describe("numeros inválidos", function () {
@@ -58,7 +58,9 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
       let resposta;
 
       try {
-        resposta = await axios.get(`/${dadosMonetario()}`);
+        const monetario = dadosDecimal().toString().replace(".", ",");
+
+        resposta = await axios.get(`/${monetario}`);
       } catch (error) {
         resposta = error.response;
       }
@@ -184,7 +186,9 @@ describe("utilizando o próprio algoritmo", function () {
       let resposta;
 
       try {
-        resposta = await axios.get(`/v2/${dadosMonetario()}`);
+        const monetario = dadosDecimal().toString().replace(".", ",");
+
+        resposta = await axios.get(`/v2/${monetario}`);
       } catch (error) {
         resposta = error.response;
       }

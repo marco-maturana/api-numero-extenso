@@ -138,8 +138,8 @@ export function dadosExtenso (tipos: keyof TipoDadosTeste): { valor: number, ext
   return arrayTipo[Math.floor(Math.random() * arrayTipo.length)];
 }
 
-const monetario = ["-2343,12", "-0,01", "0,23", "43,21", "42129,32"];
+const monetario = [ -2343.12, -0.01, 0.23, 43.21, 42129.32 ];
 
-export function dadosMonetario () {
+export function dadosDecimal () {
   return monetario[Math.floor(Math.random() * monetario.length)];
 }
