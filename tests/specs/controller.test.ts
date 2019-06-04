@@ -41,11 +41,7 @@ describe("utilizando algoritmo da biblioteca extenso.js", function () {
       let resposta;
 
       try {
-        resposta = await axios.get("/" + random.number({
-          min: -99999,
-          max: 9999,
-          precision: 0.01
-        }));
+        resposta = await axios.get(`/${dadosDecimal()}`);
       } catch (error) {
         resposta = error.response;
       }
@@ -169,11 +165,7 @@ describe("utilizando o próprio algoritmo", function () {
       let resposta;
 
       try {
-        resposta = await axios.get("/v2/" + random.number({
-          min: -99999,
-          max: 9999,
-          precision: 0.01
-        }));
+        resposta = await axios.get(`/v2/${dadosDecimal()}`);
       } catch (error) {
         resposta = error.response;
       }
