@@ -5,9 +5,7 @@ import express from "express";
 import helmet from "helmet";
 import Controller from "./controller";
 
-const envResult = dotenv.config();
-
-if (envResult.error) throw new Error("Failed to load .env file!");
+dotenv.config();
 
 const server = express();
 
