@@ -2,7 +2,9 @@
 
 Esta API tem como propósito converter números inteiros entre [-99999, 99999] para o valor por extenso. Por exemplo:
 
--31937 = "menos trinta e um mil novecentos e trinta e sete"
+-31937 = "menos trinta e um mil novecentos e trinta e sete" ([extenso.js](https://extenso.js.org))
+
+-31937 = "menos trinta e um mil e novecentos e trinta e sete" (próprio algoritmo)
 
 0 = "zero"
 
