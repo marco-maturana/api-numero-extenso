@@ -8,8 +8,6 @@ COPY package*.json ./
 
 RUN npm -g i yarn
 
-RUN yarn install
-
 COPY . .
 
 COPY --chown=node:node . .
